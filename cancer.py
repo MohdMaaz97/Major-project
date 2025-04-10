@@ -109,13 +109,10 @@ def main():
             time.sleep(2)
             model_name = "logistic_regression" if model_choice == "🤖 Logistic Regression" else "Random_forest"
             prediction = predict_data(user_data, model_name)
-            result = "The Breast Cancer is **Benign** 🟢" if prediction[0] == 1 else "The Breast Cancer is **Malignant** 🔴"
+            result = "(**Benign** 🟢)" if prediction[0] == 1 else "(**Malignant** 🔴)"
             st.success(f"Your prediction result is: {prediction[0]}\n{result}")
             user_data["Prediction"] = prediction[0]
 
-        for key, value in user_data.items():
-            if isinstance(value, np.ndarray):
-                user_data[key] = value.tolist()
 
 if __name__ == "__main__":
     main()
